@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+          "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+          "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+          
+<hibernate-configuration>
+   <session-factory>
+      <!-- SQL dialect -->
+      <property name="dialect">org.hibernate.dialect.HSQLDialect</property>
+      
+      <!-- database connection settings -->
+      <property name="connection.driver_class">org.hsqldb.jdbcDriver</property>
+      <property name="connection.url">jdbc:hsqldb:data/music</property>
+      <property name="connection.username">sa</property>
+      <property name="connection.password"></property>
+      <property name="connection.shutdown">true</property>
+      
+      <!-- jdbc connection pool(use the build in one) -->
+      <property name="connection.pool_size">1</property>
+      
+      <!-- enable hibernate's automatic session context management -->
+      <property name="current_session_context_class">thread</property>
+      
+      <!-- disable the second-level cache -->
+      <property name="cache.provider_class">org.hibernate.cache.NoCacheProvider</property>
+      
+      <!-- disable batching so hsqldb will propagate errors correctly -->
+      <property name="jdbc.batch_size">0</property>
+      
+      <!-- echo all executed sql to stdout -->
+      <property name="show_sql">true</property>
+      
+      <!-- list all the mapping documents we are using com/oreilly/hh/data/-->
+      <mapping resource="./Track.hbm.xml"/>
+      <mapping resource="./Artist.hbm.xml"/>
+      <mapping resource="./Album.hbm.xml"/>
+   </session-factory>
+</hibernate-configuration>
+      
